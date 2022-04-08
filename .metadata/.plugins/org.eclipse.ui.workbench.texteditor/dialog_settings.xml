@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="false" key="isRegEx"/>
+		<item value="Student" key="selection"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="true" key="wrap"/>
+		<item value="false" key="wholeword"/>
+		<list key="findhistory">
+			<item value="Student"/>
+			<item value="root"/>
+			<item value="file1"/>
+			<item value="ConnecrDb"/>
+			<item value="ConnerDb"/>
+			<item value="ConnerD"/>
+			<item value="Connerdb"/>
+			<item value="conn"/>
+		</list>
+		<list key="replacehistory">
+			<item value="Student1"/>
+			<item value="str1first"/>
+			<item value="str2first"/>
+			<item value="str1last"/>
+			<item value="str2last"/>
+			<item value="table"/>
+			<item value="check"/>
+			<item value="des"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="349" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="454" key="DIALOG_HEIGHT"/>
+		<item value="1383" key="DIALOG_X_ORIGIN"/>
+		<item value="152" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>

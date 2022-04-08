@@ -1,0 +1,104 @@
+package dataModels;
+
+
+import java.util.Scanner;
+
+abstract class Student1 {
+    protected String name;
+    protected int age;
+    protected char gender;
+    protected String address;
+    protected int m1, m2;
+    protected int total;
+    public Student1() {
+        name = "";
+        age = 0;
+        gender = 'M';
+        address = "";
+        m1 = 0;
+        m2 = 0;
+        total = 0;
+    }
+    public Student1(String c_name, int c_age, char c_gender, String c_address, int c_m1, int c_m2) {
+        name = c_name;
+        age = c_age;
+        gender = c_gender;
+        address = c_address;
+        m1 = c_m1;
+        m2 = c_m2;
+        total = 0;
+    }
+    void get_data() {
+        Scanner myObj = new Scanner(System.in);
+        //System.out.println("Enter name, age, gender, address and marks:");  // String input
+
+        // Numerical input
+        System.out.println("Enter name:");
+        name = myObj.nextLine();
+
+        System.out.println("Enter age:");
+        age = Integer.parseInt(myObj.nextLine());
+        System.out.println("Enter gender:");
+
+        gender = myObj.next().charAt(0);
+
+        System.out.println("Enter address:");
+        address = myObj.nextLine();
+
+        System.out.println("Enter marks1:");
+        m1 = Integer.parseInt(myObj.nextLine());
+        System.out.println("Enter marks2:");
+        m2 = Integer.parseInt(myObj.nextLine());
+    }
+    public void total_marks(int m1, int m2) {
+        total = m1 + m2;
+        System.out.println(total);
+    }
+    abstract void grade_calc();
+    public void disp_data() {
+        System.out.println(name + " " + age + " " + gender + " " + address);
+    }
+}
+
+class UGstudent extends Student1 //UGstudent is a subclass of Student class
+{
+    protected String department;
+    protected int total;
+    char stud_grade;
+    public UGstudent() {
+        super();
+        department = "";
+        total = 0;
+        stud_grade = '\0';
+    }
+    public UGstudent(String name, int age, char gender, String address, int m1, int m2, String c_department) {
+        super(name, age, gender, address, m1, m2);
+        department = c_department;
+        total = 0;
+    }
+    public void total_calc(int m3) {
+        total = super.total + m3;
+    }
+    public void grade_calc() {
+        if (total >= 90) stud_grade = 'O';
+        else if (total >= 80 && total < 90) stud_grade = 'S';
+        else if (total >= 70 && total < 80) stud_grade = 'A';
+        else if (total >= 60 && total < 60) stud_grade = 'B';
+        else if (total >= 50 && total < 60) stud_grade = 'C';
+        else stud_grade = 'F';
+    }
+    public void disp_data() {
+        super.disp_data();
+        System.out.println("Department" + department + "\t" + "Total Marks" + total);
+        System.out.println("grade" + stud_grade);
+    }
+}
+
+public class test1 extends UGstudent {
+    public static void main(String[] args) {
+        UGstudent s = new UGstudent("Reynold", 20, 'M', "Bihar", 75, 85, "Civil");
+        s.total_calc(70);
+        s.grade_calc();
+        s.disp_data();
+    }
+}

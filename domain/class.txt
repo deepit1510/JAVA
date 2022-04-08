@@ -1,0 +1,91 @@
+Class Login
+{
+	Integer login_id;
+	Integer login_per_id;
+	String login_username;
+	String user_passwoord;
+}
+
+Class Permission
+{
+	Integer per_id;
+	String per_module;
+	String per_name;
+}
+
+
+
+Class User
+{
+	Integer user_id;
+	String name;
+	Integer mobile;
+	String email;
+	String address;
+}
+
+Class customer
+{
+	String cus_name;
+	Integer cus_id;
+	String cus_add;
+	Integer cus_mobile;
+	String cus_email;
+}
+
+Class inventory
+{
+	Integer inv_id;
+	String inv_type;
+	String inv_items;
+	Integer inv_num;
+	String inv_desc;
+}
+
+
+Class Supplier
+{
+	String sup_name;
+	Integer sup_id;
+	String sup_add;
+	Integer sup_mobile;
+	String sup_email;
+}
+
+Class sales
+{
+	Integer id;
+	Integer cus_id;
+	String date;
+	Integer inv_id;
+	Float price;
+}
+
+
+Class purchase
+{
+	Integer id;
+	Integer sup_id;
+	String date;
+	Integer inv_id;
+	Float price;
+}
+
+Class payment_inward
+{
+	Integer cus_id;
+	Integer pay_id;
+	String pay_desc;
+	String pay_date;
+	Integer pay_amt;
+}
+
+
+Class payment_outward
+{
+	Integer sup_id;
+	Integer pay_id;
+	String pay_desc;
+	String pay_date;
+	Integer pay_amt;
+}

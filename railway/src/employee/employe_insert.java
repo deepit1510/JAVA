@@ -1,0 +1,130 @@
+package employee;
+
+import java.sql.*;
+import java.util.*;
+
+public class employe_insert {
+
+	static int E_ID;
+	static String E_NAME;
+	static String E_PHONE_NUMBER;
+	static String GENDER;
+	static int C_ID;
+	
+	//static int subject_id;
+	
+            static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";                
+            static final String DB_URL = "jdbc:mysql://localhost/railway";          
+    static final String USER = "root";
+    static final String PASS = "";
+	 static Scanner a;
+   
+
+ public static void employee_insert() 
+ {
+	char y='y';
+	
+    Connection conn = null;
+    Statement stmt = null;
+	
+	a = new Scanner (System.in);
+	while(y=='y')
+	{
+System.out.println("Enter Employe id");
+	 int E_ID = a.nextInt();
+	
+		
+	
+	System.out.println("Enter Employe Name");
+	String E_NAME = a.next();
+	 while(!E_NAME.matches("[a-zA-Z ,]+"))
+	 {
+ System.out.println("Re-enter Employe Name");
+ E_NAME = a.next();
+	 }
+	 
+	
+	
+		
+	System.out.println("Enter employe phone number");
+	  E_PHONE_NUMBER=a.next();
+		
+		while(!E_PHONE_NUMBER.matches("[0-9]+"))
+	 {
+			System.out.println("Re-enter phone number");
+			E_PHONE_NUMBER = a.next();
+	 }
+	
+	
+	System.out.println("Enter  Gender");
+	System.out.println("Select the gender:");
+	System.out.println("1. For Male");
+	System.out.println("2. For Female");
+	System.out.println("3. For Others");
+	int choice = a.nextInt();
+	if (choice == 1) {
+		GENDER = "Male";
+	} else if (choice == 2) {
+		GENDER = "Female";
+	} else {
+		GENDER = "other";
+	}
+
+	System.out.println("Enter  customer id");
+	 C_ID = a.nextInt();
+	 
+		
+
+
+
+    try{
+	      
+	  Class.forName("com.mysql.jdbc.Driver");
+        conn = DriverManager.getConnection(DB_URL, USER, PASS);
+	
+	
+
+  	
+
+
+        stmt = conn.createStatement();
+System.out.println("Connection is created successfully:");
+        String sql;
+        sql =  "insert into employee(E_ID,E_NAME,E_PHONE_NUMBER,GENDER,C_ID) values("+E_ID+",'"+E_NAME+" ','"+E_PHONE_NUMBER+"' ,' "+GENDER+" ',"+C_ID+")";
+          stmt.executeUpdate(sql);
+          
+      System.out.println("Record is inserted in the table successfully..................");
+      } catch (SQLException excep) {
+         excep.printStackTrace();
+      } catch (Exception excep) {
+         excep.printStackTrace();
+      } finally {
+         try {
+            if (stmt != null)
+               conn.close();
+         } catch (SQLException se) 
+         {
+        	 
+         }
+        	 
+         try {
+            if (conn != null)
+               conn.close();
+         } catch (SQLException se) {
+            se.printStackTrace();
+         }  
+      }
+      System.out.println("Please check it in the MySQL Table......... ……..");
+      System.out.println("Do you want to insert more record(y for 'Yes' and n for 'No'");
+		y = a.next().charAt(0);
+
+   }
+
+
+
+
+ }
+
+
+}
+

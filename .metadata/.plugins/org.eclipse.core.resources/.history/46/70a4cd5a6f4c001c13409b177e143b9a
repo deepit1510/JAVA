@@ -1,0 +1,18 @@
+//Create a class called ‘Employee’ with attributes such as Empid, Empname, Designation, 
+//Basic Pay, Allowances, Deductions, Gross pay and Net pay. Create an Interface called ‘Payroll 
+//Process’ that contains methods to calculate grosspay and netpay, Finally, provide a main method to 
+//display the payroll of employees of an organization having 100 employee.
+
+package yashus;
+
+public class test {
+	Integer Empid;
+	String Empname;
+	String Destination;
+	Integer Basic_Pay;
+	Integer Allowances;
+	
+	
+	
+	
+}

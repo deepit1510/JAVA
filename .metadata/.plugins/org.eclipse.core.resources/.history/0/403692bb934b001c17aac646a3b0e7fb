@@ -1,0 +1,93 @@
+package dataModels;
+
+
+import java.io.*;
+import java.lang.*;
+import java.lang.String.*;
+
+abstract class Student1
+{
+protected String name;
+protected int age;
+protected char gender;
+protected String address;
+protected int m1, m2;
+protected int total;
+public Student1()
+{
+name ="";
+age=0;
+gender='M';
+address="";
+total=0;
+}
+public Student1(String c_name, int c_age, char c_gender, String c_address)
+{
+name=c_name;
+age= c_age;
+gender=c_gender;
+address=c_address;
+total=0;
+}
+//void get_data()
+//{ }
+//public void total_marks(int m1, int m2)
+//{
+//total = m1+m2;
+//System.out.println(total);
+//}
+abstract void grade_calc();
+public void disp_data()
+{
+System.out.println(name+" "+age+" "+gender+" "+address);
+}
+}
+
+class UGstudent extends Student1 //UGstudent is a subclass of Student class
+{
+protected String department;
+protected int total;
+char stud_grade;
+public UGstudent()
+{
+super();
+department="";
+total =0;
+stud_grade='\0';
+}
+public UGstudent(String name, int age, char gender, String address, String c_department)
+{
+super(name, age, gender, address);
+department = c_department;
+total=0;
+}
+public void total_calc(int m3)
+{
+total = super.total+m3;
+}
+public void grade_calc()
+{
+if (total>=90) stud_grade = 'O';
+else if (total >=80 && total <90) stud_grade='S';
+else if(total >=70 && total<80) stud_grade ='A';
+else if (total >= 60 && total <60) stud_grade ='B';
+else if (total >= 50 && total <60) stud_grade ='C';
+else stud_grade = 'F';
+}
+public void disp_data()
+{
+super.disp_data();
+System.out.println("Department"+ department + "\t"+"Total Marks"+total);
+System.out.println("grade"+stud_grade);
+}
+}
+public class test1
+{
+public static void main(String[] args)
+{
+UGstudent s=new UGstudent("Reynold", 20, 'M', "Bihar", "Civil");
+s.total_calc(70);
+s.grade_calc();
+s.disp_data();
+}
+}

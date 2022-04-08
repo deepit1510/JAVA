@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;cancellation.cancellation_updat&apos; to &apos;cancellation_update&apos;&#x0D;&#x0A;- Original project: &apos;railway&apos;&#x0D;&#x0A;- Original element: &apos;cancellation.cancellation_updat&apos;&#x0D;&#x0A;- Renamed element: &apos;cancellation.cancellation_update&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;cancellation_updat&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;cancellation{cancellation_updat.java[cancellation_updat" matchStrategy="1" name="cancellation_update" qualified="false" references="true" similarDeclarations="false" stamp="1594570589581" textual="false" version="1.0"/>
+</session>

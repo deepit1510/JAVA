@@ -1,0 +1,26 @@
+//Student having fields such as Regno, Name, T1, T2, T3, Assignment and Attendance  –Inherited by PG Student have a unique 
+//field Activity; calculate total marks, Average and Grade for a class of 70 MCA students which are created as array of objects 
+//of PG Student class.
+
+package yashus;
+
+import java.util.Scanner;
+
+
+
+public class test {
+	static Integer[] Regno = new Integer[100] ;
+	static String[] Name = new String[100];
+	//static String[] Designation = new String[100];;
+	static Integer[] T1 = new Integer[100];
+	static Integer[] T2 = new Integer[100];
+	static Integer[] T3= new Integer[100];
+	static Integer[] Assignment= new Integer[100];
+	static Integer[] Attendance= new Integer[100];
+	static Integer count ;
+	
+}
+
+public class test {
+	
+}

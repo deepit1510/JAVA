@@ -1,0 +1,5 @@
+127.0.0.1 - - [01/Dec/2020:12:31:51 +0530] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [01/Dec/2020:12:32:00 +0530] "GET /deppit/helloworld.jsp HTTP/1.1" 200 283
+0:0:0:0:0:0:0:1 - - [01/Dec/2020:12:34:50 +0530] "GET /deppit/helloworld.jsp HTTP/1.1" 200 288
+0:0:0:0:0:0:0:1 - - [01/Dec/2020:12:38:04 +0530] "GET /deppit/helloworld.jsp HTTP/1.1" 200 294
+0:0:0:0:0:0:0:1 - - [01/Dec/2020:12:43:14 +0530] "GET /deppit/helloworld.jsp HTTP/1.1" 200 359

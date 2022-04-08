@@ -1,0 +1,290 @@
+package supplier;
+
+import frames.*;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Font;
+import java.awt.Toolkit;
+
+import javax.swing.JTextField;
+import javax.swing.JTextArea;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.Dimension;
+import javax.swing.SwingConstants;
+
+public class update_supplier extends JFrame {
+	static int sup_id;
+	static String sp_id;
+	static String sup_name;
+	static String gst_no;
+	static String sup_email;
+	static String sup_adr;
+	static String phon;
+	static Long phn;
+
+	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+
+	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+	static final String DB_URL = "jdbc:mysql://localhost/inventory_control_management";
+	static final String USER = "root";
+	static final String PASS = "";
+	private JTextField textField_4;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					update_supplier frame = new update_supplier();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	private void makeFrameFullSize(JFrame aFrame) {
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		aFrame.setSize(screenSize.width, screenSize.height);
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public update_supplier() {
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		setSize(screenSize.width, screenSize.height);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.DARK_GRAY);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+
+		JLabel lblInsertSupplierRecord = new JLabel("Update Supplier Record");
+		lblInsertSupplierRecord.setForeground(Color.WHITE);
+		lblInsertSupplierRecord.setHorizontalAlignment(SwingConstants.CENTER);
+		lblInsertSupplierRecord.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 32));
+		lblInsertSupplierRecord.setBounds(12, 36, 1878, 42);
+		contentPane.add(lblInsertSupplierRecord);
+
+		JLabel lblNewLabel = new JLabel("Supplier Name");
+		lblNewLabel.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel.setFont(new Font("Tahoma", Font.ITALIC, 18));
+		lblNewLabel.setBounds(99, 260, 132, 22);
+		contentPane.add(lblNewLabel);
+
+		textField = new JTextField();
+		textField.setBounds(357, 249, 235, 49);
+		contentPane.add(textField);
+		textField.setColumns(10);
+
+		JLabel lblSupplierEmail = new JLabel("Supplier E-mail");
+		lblSupplierEmail.setForeground(Color.LIGHT_GRAY);
+		lblSupplierEmail.setFont(new Font("Tahoma", Font.ITALIC, 18));
+		lblSupplierEmail.setBounds(99, 346, 132, 22);
+		contentPane.add(lblSupplierEmail);
+
+		textField_1 = new JTextField();
+		textField_1.setBounds(357, 330, 235, 58);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+
+		JLabel lblNewLabel_1 = new JLabel("GST No.");
+		lblNewLabel_1.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.ITALIC, 18));
+		lblNewLabel_1.setBounds(99, 450, 75, 22);
+		contentPane.add(lblNewLabel_1);
+
+		textField_2 = new JTextField();
+		textField_2.setBounds(357, 439, 235, 49);
+		contentPane.add(textField_2);
+		textField_2.setColumns(10);
+
+		JLabel lblNewLabel_2 = new JLabel("Supplier Address");
+		lblNewLabel_2.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.ITALIC, 18));
+		lblNewLabel_2.setBounds(99, 567, 142, 22);
+		contentPane.add(lblNewLabel_2);
+
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(357, 542, 235, 85);
+		contentPane.add(textArea);
+
+		JLabel lblSupplierPhoneNumber = new JLabel("Supplier Phone Number");
+		lblSupplierPhoneNumber.setForeground(Color.LIGHT_GRAY);
+		lblSupplierPhoneNumber.setFont(new Font("Tahoma", Font.ITALIC, 18));
+		lblSupplierPhoneNumber.setBounds(99, 689, 201, 22);
+		contentPane.add(lblSupplierPhoneNumber);
+
+		textField_3 = new JTextField();
+		textField_3.setBounds(357, 673, 235, 58);
+		contentPane.add(textField_3);
+		textField_3.setColumns(10);
+
+		JButton btnInsert = new JButton("Update");
+		btnInsert.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 23));
+		btnInsert.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Connection conn = null;
+				Statement stmt = null;
+				sp_id = textField_4.getText();
+				sup_name = textField.getText();
+				sup_email = textField_1.getText();
+				gst_no = textField_2.getText();
+				sup_adr = textField_3.getText();
+				phon = textField_3.getText();
+				if (!sp_id.matches("[0-9]+")) {
+					JOptionPane.showMessageDialog(null, "Supplier id cannot be null or in char");
+				} else if (!sup_name.matches("[a-zA-Z ,]+")) {
+					JOptionPane.showMessageDialog(null, "Supplier name cannot be null");
+				} else if (sup_email.trim().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Supplier Email cannot be null");
+				} else if (gst_no.trim().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "GST number cannot be null");
+				} else if (sup_adr.trim().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Supplier address cannot be null");
+				} else if (!phon.matches("[0-9]+")) {
+					JOptionPane.showMessageDialog(null, "Supplier phone number cannot be null");
+				} else {
+					try {
+						phn = Long.parseLong(phon);
+						sup_id = Integer.parseInt(sp_id);
+						Class.forName("com.mysql.jdbc.Driver");
+						conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+						stmt = conn.createStatement();
+						System.out.println("Connection is created successfully:");
+						String sql;
+
+						sql = "update supplier set sup_name='" + sup_name + "',sup_email='" + sup_email + "',gst_no='"
+								+ gst_no + "',sup_address='" + sup_adr + "',sup_phn=" + phn + " where sup_id=" + sup_id;
+						stmt.executeUpdate(sql);
+						System.out.println("Record is inserted in the table successfully..................");
+						JOptionPane.showMessageDialog(null, "Supplier record updated");
+						update_supplier update = new update_supplier();
+						update.setVisible(true);
+					} catch (SQLException excep) {
+						excep.printStackTrace();
+					} catch (Exception excep) {
+						excep.printStackTrace();
+					} finally {
+						try {
+							if (stmt != null)
+								conn.close();
+						} catch (SQLException se) {
+						}
+						try {
+							if (conn != null)
+								conn.close();
+						} catch (SQLException se) {
+							se.printStackTrace();
+						}
+					}
+				}
+			}
+		});
+		btnInsert.setBounds(1400, 222, 199, 49);
+		contentPane.add(btnInsert);
+
+		JButton btnReset = new JButton("Reset");
+		btnReset.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 23));
+		btnReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				update_supplier update = new update_supplier();
+				update.setVisible(true);
+			}
+		});
+		btnReset.setBounds(1400, 335, 199, 49);
+		contentPane.add(btnReset);
+
+		JButton btnM = new JButton("Main Menu");
+		btnM.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 23));
+		btnM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				admin_main_page frame2 = new admin_main_page();
+				frame2.setVisible(true);
+			}
+		});
+		btnM.setBounds(1400, 559, 205, 42);
+		contentPane.add(btnM);
+
+		JButton btnNewButt = new JButton("Previous Menu");
+		btnNewButt.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 23));
+		btnNewButt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				supplier_main_menu frame3 = new supplier_main_menu();
+				frame3.setVisible(true);
+			}
+		});
+		btnNewButt.setBounds(1400, 459, 199, 42);
+		contentPane.add(btnNewButt);
+
+		JLabel lblSupplierId = new JLabel("Supplier ID");
+		lblSupplierId.setForeground(Color.LIGHT_GRAY);
+		lblSupplierId.setFont(new Font("Tahoma", Font.ITALIC, 18));
+		lblSupplierId.setBounds(97, 169, 97, 22);
+		contentPane.add(lblSupplierId);
+
+		textField_4 = new JTextField();
+		textField_4.setBounds(357, 158, 235, 49);
+		contentPane.add(textField_4);
+		textField_4.setColumns(10);
+
+		JLabel label = new JLabel("*");
+		label.setForeground(Color.RED);
+		label.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		label.setBounds(191, 158, 23, 27);
+		contentPane.add(label);
+
+		JLabel label_1 = new JLabel("*");
+		label_1.setForeground(Color.RED);
+		label_1.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		label_1.setBounds(218, 249, 23, 27);
+		contentPane.add(label_1);
+
+		JLabel label_2 = new JLabel(" *");
+		label_2.setForeground(Color.RED);
+		label_2.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		label_2.setBounds(218, 330, 23, 52);
+		contentPane.add(label_2);
+
+		JLabel label_3 = new JLabel("*");
+		label_3.setForeground(Color.RED);
+		label_3.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		label_3.setBounds(171, 439, 23, 27);
+		contentPane.add(label_3);
+
+		JLabel label_4 = new JLabel("*");
+		label_4.setForeground(Color.RED);
+		label_4.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		label_4.setBounds(236, 559, 23, 27);
+		contentPane.add(label_4);
+
+		JLabel label_5 = new JLabel("*");
+		label_5.setForeground(Color.RED);
+		label_5.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		label_5.setBounds(293, 690, 23, 22);
+		contentPane.add(label_5);
+	}
+}

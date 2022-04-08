@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_241"/>
+	<classpathentry kind="lib" path="E:/eclipse-jee-neon-R-win32-x86_64/ab/commons-lang3-3.11.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse-jee-neon-R-win32-x86_64/ab/commons-lang3-3.11-javadoc.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse-jee-neon-R-win32-x86_64/ab/commons-lang3-3.11-sources.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse-jee-neon-R-win32-x86_64/ab/commons-lang3-3.11-tests.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse-jee-neon-R-win32-x86_64/ab/commons-lang3-3.11-test-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deepi/Desktop/com.lowagie.text-2.1.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deepi/Desktop/itextpdf-5.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deepi/Desktop/itext-bcprov-jdk14-138.jar.zip"/>
+	<classpathentry kind="lib" path="C:/Users/deepi/Desktop/bcprov-jdk15to18-168.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

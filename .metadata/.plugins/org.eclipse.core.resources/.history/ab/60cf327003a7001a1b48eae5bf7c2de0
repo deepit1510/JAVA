@@ -1,0 +1,188 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JTextArea;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.awt.event.ActionEvent;
+
+public class insert_supplier extends JFrame {
+	static String sup_name;
+	static String gst_no;
+	static String sup_email;
+	static String sup_adr;
+	static Long phn;
+
+	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	
+	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+	static final String DB_URL = "jdbc:mysql://localhost/inventory_control_management";
+	static final String USER = "root";
+	static final String PASS = "";
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					insert_supplier frame = new insert_supplier();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public insert_supplier() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1304, 759);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblInsertSupplierRecord = new JLabel("Insert Supplier Record");
+		lblInsertSupplierRecord.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		lblInsertSupplierRecord.setBounds(553, 36, 261, 27);
+		contentPane.add(lblInsertSupplierRecord);
+		
+		JLabel lblNewLabel = new JLabel("Supplier Name");
+		lblNewLabel.setFont(new Font("Tahoma", Font.ITALIC, 18));
+		lblNewLabel.setBounds(99, 143, 132, 22);
+		contentPane.add(lblNewLabel);
+		
+		textField = new JTextField();
+		textField.setBounds(309, 132, 157, 35);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblSupplierEmail = new JLabel("Supplier E-mail");
+		lblSupplierEmail.setFont(new Font("Tahoma", Font.ITALIC, 18));
+		lblSupplierEmail.setBounds(99, 225, 132, 22);
+		contentPane.add(lblSupplierEmail);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(309, 221, 157, 35);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel lblNewLabel_1 = new JLabel("GST No.");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.ITALIC, 18));
+		lblNewLabel_1.setBounds(99, 309, 75, 22);
+		contentPane.add(lblNewLabel_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(309, 305, 157, 35);
+		contentPane.add(textField_2);
+		textField_2.setColumns(10);
+		
+		JLabel lblNewLabel_2 = new JLabel("Supplier Address");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.ITALIC, 18));
+		lblNewLabel_2.setBounds(100, 413, 142, 22);
+		contentPane.add(lblNewLabel_2);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(309, 388, 235, 85);
+		contentPane.add(textArea);
+		
+		JLabel lblSupplierPhoneNumber = new JLabel("Supplier Phone Number");
+		lblSupplierPhoneNumber.setFont(new Font("Tahoma", Font.ITALIC, 17));
+		lblSupplierPhoneNumber.setBounds(99, 558, 186, 22);
+		contentPane.add(lblSupplierPhoneNumber);
+		
+		textField_3 = new JTextField();
+		textField_3.setBounds(309, 547, 167, 42);
+		contentPane.add(textField_3);
+		textField_3.setColumns(10);
+		
+		JButton btnInsert = new JButton("Insert");
+		btnInsert.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Connection conn = null;
+				Statement stmt = null;
+				
+				sup_name = textField.getText();
+				sup_email = textField_1.getText();
+				gst_no = textField_2.getText();
+				sup_adr = textField_3.getText();
+				phn = Long.parseLong(textField_3.getText());
+				try {
+
+					Class.forName("com.mysql.jdbc.Driver");
+					conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+					stmt = conn.createStatement();
+					System.out.println("Connection is created successfully:");
+					String sql;
+
+					sql = "insert into supplier(sup_name, sup_email, gst_no, sup_address, sup_phn) values('"+ sup_name + "','" +sup_email+"','"+ gst_no + "','"
+							+ sup_adr + "'," + phn + ")";
+					stmt.executeUpdate(sql);
+					System.out.println("Record is inserted in the table successfully..................");
+				} catch (SQLException excep) {
+					excep.printStackTrace();
+				} catch (Exception excep) {
+					excep.printStackTrace();
+				} finally {
+					try {
+						if (stmt != null)
+							conn.close();
+					} catch (SQLException se) {
+					}
+					try {
+						if (conn != null)
+							conn.close();
+					} catch (SQLException se) {
+						se.printStackTrace();
+					}
+				}
+			}
+		});
+		btnInsert.setBounds(1035, 186, 97, 25);
+		contentPane.add(btnInsert);
+		
+		JButton btnReset = new JButton("Reset");
+		btnReset.setBounds(1035, 271, 97, 25);
+		contentPane.add(btnReset);
+		
+		JButton btnM = new JButton("Main Menu");
+		btnM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame_2 frame2 = new frame_2();
+				frame2.setVisible(true);
+			}
+		});
+		btnM.setBounds(790, 508, 97, 25);
+		contentPane.add(btnM);
+		
+		JButton btnNewButt = new JButton("Previous Menu");
+		btnNewButt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame_3_2 frame3 = new frame_3_2();
+				frame3.setVisible(true);
+			}
+		});
+		btnNewButt.setBounds(1017, 508, 115, 25);
+		contentPane.add(btnNewButt);
+	}
+}

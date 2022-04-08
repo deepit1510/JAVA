@@ -1,0 +1,67 @@
+package customer;
+
+import java.util.*;
+import java.sql.*;
+
+public class customer_update {
+	static int id;
+	static String name;
+	static long phn;
+	static int age;
+	static String gender;
+	static int t_id;
+
+	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+	static final String DB_URL = "jdbc:mysql://localhost/railway";
+	static final String USER = "root";
+	static final String PASS = "";
+
+	public static void customer_update() {
+		Connection conn = null;
+		Statement stmt = null;
+		// c_name, C_PHONE NUMBER C_AGE GENDER T_ID
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter the Customer id:");
+		id = input.nextInt();
+		System.out.println("Enter the customer name:");
+		name = input.next();
+		System.out.println("Enter the customer phone number:");
+		phn = input.nextLong();
+		System.out.println("Enter the customer age:");
+		age = input.nextInt();
+		System.out.println("Enter the customer gender:");
+		gender = input.next();
+
+		try {
+
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+			stmt = conn.createStatement();
+			System.out.println("Connection is created successfully:");
+			String sql;
+
+			sql = "update customer set C_NAME='" + name + "',C_PHONE_NUMBER=" + phn + ",C_AGE=" + age + ",GENDER='"
+					+ gender + "' where C_ID=" + id;
+			stmt.executeUpdate(sql);
+			System.out.println("Record is inserted in the table successfully..................");
+		} catch (SQLException excep) {
+			excep.printStackTrace();
+		} catch (Exception excep) {
+			excep.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null)
+					conn.close();
+			} catch (SQLException se) {
+			}
+			try {
+				if (conn != null)
+					conn.close();
+			} catch (SQLException se) {
+				se.printStackTrace();
+			}
+		}
+		System.out.println("Please check it in the MySQL Table......... ……..");
+	}
+}

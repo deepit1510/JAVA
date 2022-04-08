@@ -1,0 +1,59 @@
+package customer;
+
+import java.util.*;
+import java.sql.*;
+
+
+public class customer_insert{
+	int id;
+	String name;
+	long stock;
+	double price;
+            static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";                
+            static final String DB_URL = "jdbc:mysql://localhost/inventory_control";          
+    static final String USER = "root";
+    static final String PASS = "";
+
+public static void main(String[] args) {
+    Connection conn = null;
+    Statement stmt = null;
+    Scanner input = new Scanner(System.in);
+    System.out.println("Enter the item id:");
+	id = input.nextInt();
+	System.out.println("Enter the item name:");
+	name = input.next();
+	System.out.println("Enter the item stock:");
+	stock = input.nextLong();
+	System.out.println("Enter the price of the stock:");
+	 price = input.nextDouble();
+    try{
+  
+        Class.forName("com.mysql.jdbc.Driver");
+        conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+        stmt = conn.createStatement();
+System.out.println("Connection is created successfully:");
+        String sql;
+	
+        sql = "insert into inventory_management values(id,name,stock,price)";
+          stmt.executeUpdate(sql);
+      System.out.println("Record is inserted in the table successfully..................");
+      } catch (SQLException excep) {
+         excep.printStackTrace();
+      } catch (Exception excep) {
+         excep.printStackTrace();
+      } finally {
+         try {
+            if (stmt != null)
+               conn.close();
+         } catch (SQLException se) {}
+         try {
+            if (conn != null)
+               conn.close();
+         } catch (SQLException se) {
+            se.printStackTrace();
+         }  
+      }
+      System.out.println("Please check it in the MySQL Table......... ……..");
+   }
+}

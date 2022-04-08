@@ -1,0 +1,84 @@
+package dataModels;
+
+
+import java.io.*;
+import java.lang.*;
+import java.lang.String.*;
+import java.util.Scanner;
+import java.util.Scanner.*;
+class Student
+{
+protected String name;
+protected int age;
+protected String gender;
+protected String address;
+protected float m1, m2;
+protected float total;
+public Student()
+{
+ name ="";
+ age=0;
+gender="M";
+address="";
+m1=0;m2=0;
+}
+
+public Student(String name, int age, String gender, String address,float m1, float m2)  {
+this.name=name;
+age= this.age;
+this.gender=gender;
+this.address=address;
+this.m1=m1;  
+this.m2=m2;
+}
+
+void get_data()
+{
+// to get data from the user
+ Scanner myObj = new Scanner(System.in);
+ System.out.println("Enter name, age, gender, address and marks:");  // String input
+ String name = myObj.nextLine();
+ // Numerical input
+ int age = myObj.nextInt();
+ String gender = myObj.next();
+ String address = myObj.nextLine();
+ float m1 = myObj.nextFloat();
+ float m2 = myObj.nextFloat();
+}
+public void total_marks( )
+{  
+total = m1+m2;
+System.out.println(total);
+}
+public void total_marks(int m1, int m2)
+{  
+total = m1+m2;
+System.out.println(total);
+}
+void disp_info()
+{
+System.out.println("Name: "+name);
+System.out.println("Age: "+age);
+System.out.println("Gender: "+gender);
+System.out.println("Address:" +address);
+
+}
+
+
+public class test {
+
+public void main(String[] args) {
+Student s=new Student();
+s.disp_info();
+s.total_marks();
+Student s1=new Student("David", 20,"F","12,KKKKHHH St, Karnataka",70,80);
+s.disp_info();
+s.total_marks();
+s.get_data();
+s.disp_info();
+s.total_marks(70,90);
+
+}
+
+}
+}

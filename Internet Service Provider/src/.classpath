@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="E:/eclipse-jee-neon-R-win32-x86_64/a/rs2xml.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse-jee-neon-R-win32-x86_64/New_GUI/javax.mail-1.6.2.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse-jee-neon-R-win32-x86_64/New_GUI/jgoodies-forms-1.8.0.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse-jee-neon-R-win32-x86_64/New_GUI/jgoodies-forms-1.8.0-sources.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse-jee-neon-R-win32-x86_64/New_GUI/miglayout15-swing.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse-jee-neon-R-win32-x86_64/New_GUI/mysql-connector-java-5.0.8-bin.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse-jee-neon-R-win32-x86_64/New_GUI/rs2xml.jar"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

@@ -1,0 +1,16 @@
+/**
+ * 
+ */
+package nest4;
+
+import java.util.Scanner;
+
+
+public class restaurant {
+	Scanner input = new Scanner("System.in");
+public static void main(String[] args){
+	System.out.println("price 1:");
+	System.out.println("price 2:");
+	System.out.println("price 3:");
+}
+}

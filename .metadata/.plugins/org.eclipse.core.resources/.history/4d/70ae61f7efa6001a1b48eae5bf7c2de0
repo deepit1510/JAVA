@@ -1,0 +1,76 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class frame_3_4 extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frame_3_4 frame = new frame_3_4();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public frame_3_4() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1305, 762);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Select one Choice:");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 21));
+		lblNewLabel.setBounds(44, 327, 197, 26);
+		contentPane.add(lblNewLabel);
+		
+		JButton btnPlaceOrder = new JButton("Place Order");
+		btnPlaceOrder.setBounds(886, 202, 99, 25);
+		contentPane.add(btnPlaceOrder);
+		
+		JButton btnDisplayReoderRecord = new JButton("Display Reoder record");
+		btnDisplayReoderRecord.setBounds(886, 298, 159, 25);
+		contentPane.add(btnDisplayReoderRecord);
+		
+		JButton btnDeleteRecord = new JButton("Delete reorder record");
+		btnDeleteRecord.setBounds(886, 392, 157, 25);
+		contentPane.add(btnDeleteRecord);
+		
+		JButton btnMainMenu = new JButton("Main Menu");
+		btnMainMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame_2 frame2 = new frame_2();
+				frame2.setVisible(true);
+			}
+		});
+		btnMainMenu.setBounds(314, 568, 97, 25);
+		contentPane.add(btnMainMenu);
+		
+		JButton btnPreviousMenu = new JButton("Previous Menu");
+		btnPreviousMenu.setBounds(697, 568, 97, 25);
+		contentPane.add(btnPreviousMenu);
+	}
+
+}

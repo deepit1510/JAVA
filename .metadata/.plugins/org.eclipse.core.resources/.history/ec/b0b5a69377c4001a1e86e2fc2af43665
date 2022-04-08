@@ -1,0 +1,52 @@
+import java.util.Scanner;
+import customer.*;
+import cancellation.*;
+import reservation.*;
+import train.*;
+import employee.*;
+
+public class main_menu {
+public static void main_menu() {
+	Scanner input = new Scanner(System.in);
+	System.out.println("Enter the choice:-");
+	System.out.println("1) Customer");
+	System.out.println("2) Reservation");
+	System.out.println("3) Train");
+	System.out.println("4) Cancelation");
+	System.out.println("5) Employee");
+	int a = input.nextInt();
+	switch(a) {
+	case 1: {
+		System.out.println("Enter the choice:-");
+		System.out.println("1) Insert Customer");
+		System.out.println("2) Update Customer");
+		System.out.println("3) Display Customer");
+		System.out.println("4) Delete Customer");
+		System.out.println("5) Main Menu");
+		int b = input.nextInt();
+		if (b==1) {
+			customer_insert insert = new customer_insert();
+			insert.customer_insert();
+		}
+		else if (b==2) {
+			customer_update update = new customer_update();
+			update.customer_update();
+		}
+		else if (b==3) {
+			customer_display display = new customer_display();
+			display.customer_display();
+		}
+		else if (b==4) {
+			customer_delete delete = new customer_delete();
+			delete.customer_delete();
+		}
+		else if (b==5) {
+			main_menu();
+		}
+	}
+		
+	}
+		
+	
+}
+}

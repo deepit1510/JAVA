@@ -1,0 +1,24 @@
+/**
+ * 
+ */
+package nest4;
+
+import java.util.Scanner;
+
+
+public class restaurant {
+	static Scanner input = new Scanner("System.in");
+public static void main(String[] args){
+	System.out.println("price 1:");
+	double p1 = input.nextInt();
+	System.out.println("price 2:");
+	double p2 = input.nextInt();
+	System.out.println("price 3:");
+	double p3 = input.nextInt();
+	System.out.println("tax %:");
+	double tx = input.nextInt();
+	double t_p = p1+p2+p3;
+	double fnl_amt = (tx* t_p)/100;
+	System.out.println("Final Amount:"+fnl_amt);
+}
+}

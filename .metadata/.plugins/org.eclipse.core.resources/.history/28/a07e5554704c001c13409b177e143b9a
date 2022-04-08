@@ -1,0 +1,79 @@
+//Create a class called ‘Employee’ with attributes such as Empid, Empname, Designation, 
+//Basic Pay, Allowances, Deductions, Gross pay and Net pay. Create an Interface called ‘Payroll 
+//Process’ that contains methods to calculate grosspay and netpay, Finally, provide a main method to 
+//display the payroll of employees of an organization having 100 employee.
+
+package yashus;
+
+import java.util.Scanner;
+
+
+interface payroll_process{  
+void grosspay();
+void netpay();
+}  
+
+public class test {
+	static Integer[] Empid = new Integer[100] ;
+	static String[] Empname = new String[100];
+	static String[] Designation = new String[100];;
+	static Integer[] Deductions = new Integer[100];
+	static Integer[] Basic_Pay = new Integer[100];
+	static Integer[] Allowances= new Integer[100];
+	static Integer[] grosspay= new Integer[100];
+	static Integer[] netpay= new Integer[100];
+	static Integer count =0;
+	
+	public static void get_data()
+	{
+		Scanner myObj = new Scanner(System.in);
+        //System.out.println("Enter name, age, gender, address and marks:");  // String input
+
+        // Numerical input
+        System.out.println("Enter employee id:");
+        Empid[count] = Integer.parseInt(myObj.nextLine());
+
+        System.out.println("Enter employee name:");
+        Empname[count] = myObj.nextLine();
+        System.out.println("Enter designation:");
+
+        Designation[count] = myObj.nextLine();
+
+        System.out.println("Enter basic pay:");
+        Basic_Pay[count] = Integer.parseInt(myObj.nextLine());
+        
+        System.out.println("Enter allowance amount:");
+        Allowances[count]= Integer.parseInt(myObj.nextLine());
+        
+        System.out.println("Enter deduction amount:");
+        Deductions[count]	= Integer.parseInt(myObj.nextLine());
+        grosspay(count);
+        netpay(count);
+        count++;
+	}
+	
+	public static void grosspay(Integer i)
+	{
+		grosspay[i] = Allowances[i] + Basic_Pay[i];
+	}
+	
+	public static void netpay(Integer i)
+	{
+		netpay[i] = grosspay[i] - Deductions[i];
+	}
+	
+	public static void display()
+	{
+		for(int i=0; i<count; i++)
+		{
+			System.out.println(Empid[i]+" "+Empname[i]+" "+Designation[i]+" "+Basic_Pay[i]+" "+Allowances[i]+" "+Deductions[i]+" "+grosspay[i]+" "+netpay[i]);
+		}
+	}
+	
+	public static void main(String[] args) {
+		get_data();
+		display();
+        
+    }
+	
+}
